@@ -1,8 +1,6 @@
 Accounts.registerLoginHandler('the-great-masquerade', function(data) {
-  console.log(data);
   if (typeof data.userId === 'undefined') { return; }
 
-  console.log('good masquerade');
   return { userId: data.userId };
 });
 

@@ -1,3 +1,9 @@
+Template.chat_message.onRendered(function() {
+  Meteor.setTimeout(function() {
+    window.scrollTo(0, document.body.scrollHeight);
+  }, 0);
+});
+
 Template.chat.events({
   'submit .chat-form': function(e, t) {
     e.preventDefault();

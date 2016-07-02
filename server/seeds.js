@@ -48,6 +48,10 @@ Meteor.startup(function() {
     createdAt: function() {
       return moment().valueOf();
     },
+    rejects: function() {
+      return [];
+    },
+    pendingRequest: null,
     active: true,
   });
 
