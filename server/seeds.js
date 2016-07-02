@@ -1,7 +1,9 @@
 Meteor.startup(function() {
+  /*
   Users.remove({});
   Rides.remove({});
   Messages.remove({});
+ */
 
   let theLoft = [52.5058605, 13.3932209];
   const destinations = [
@@ -18,7 +20,9 @@ Meteor.startup(function() {
   }
 
   Factory.define('user', Users, {
-    name: function() { return Fake.word() + ' ' + Fake.word(); },
+    name: function() {
+      return Fake.word() + ' ' + Fake.word();
+    },
     location: function() {
       return aroundPoint(theLoft);
     },
@@ -34,9 +38,12 @@ Meteor.startup(function() {
     userIds: function() {
       let users = [];
       _(_.random(1, 3)).times(function() {
-        users.push(Factory.create('user'));
+        users.push(Factory.create('user')._id);
       });
       return users;
+    },
+    leaderId: function() {
+      return _.sample(this.userIds);
     },
     createdAt: function() {
       return moment().valueOf();
@@ -45,8 +52,8 @@ Meteor.startup(function() {
   });
 
   Factory.define('message', Messages, {
-    rideId: Factory.get('ride'),
-    userId: Factory.get('user'),
+    rideId: function() { throw new Error('foo') }, //Factory.get('ride'),
+    userId: function() { throw new Error('foo') }, //Factory.get('user'),
     timestamp: function() {
       return moment().valueOf();
     },
@@ -67,4 +74,7 @@ Meteor.startup(function() {
       });
     });
   }
+
+  console.log("Rides:\n\n", Rides.find({}).fetch());
+  console.log("Users:\n\n", Users.find({}).fetch());
 });

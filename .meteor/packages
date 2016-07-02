@@ -23,6 +23,7 @@ aldeed:collection2
 aldeed:autoform
 useraccounts:iron-routing
 autopublish
+reactive-var
 ecmascript
 meteor-base
 mobile-experience
@@ -39,3 +40,4 @@ spacebars
 check
 standard-minifier-css
 standard-minifier-js
+insecure

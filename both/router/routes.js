@@ -7,7 +7,7 @@ Router.route('/travel', {
   controller: 'TravelController'
 });
 
-Router.route('/chat', {
+Router.route('/chat/:rideId', {
   name: 'chat',
   controller: 'ChatController'
 });
