@@ -1,5 +1,6 @@
 Router.route('/', {
-  controller: 'TravelController'
+  controller: 'AppController',
+  name: 'home'
 });
 
 Router.route('/travel', {
