@@ -9,9 +9,7 @@ ChatController = AppController.extend({
                               { sort: { timestamp: 'desc' } })
     };
   },
-  /*
   onAfterAction: function() {
-    Meta.setTitle('Dashboard');
+    Meta.setTitle('Chat');
   }
- */
 });

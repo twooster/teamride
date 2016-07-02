@@ -1,10 +1,10 @@
-MatchController = AppController.extend({
+TravelController = AppController.extend({
   onAfterAction: function () {
-    Meta.setTitle('Dashboard');
+    Meta.setTitle('Address');
   }
 });
 
-MatchController.events({
+TravelController.events({
   'click [data-action=doSomething]': function (event, template) {
     event.preventDefault();
   }

@@ -1,6 +1,6 @@
 MatchController = AppController.extend({
   onAfterAction: function () {
-    Meta.setTitle('Dashboard');
+    Meta.setTitle('Matches');
   }
 });
 
