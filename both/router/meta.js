@@ -2,8 +2,8 @@ if(Meteor.isClient) {
   Meta.config({
       options: {
         // Meteor.settings[Meteor.settings.environment].public.meta.title
-        title: 'TeamRide',
-        suffix: 'GmbH'
+        title: 'Home',
+        suffix: 'TeamRide'
       }
   });
 }
