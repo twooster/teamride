@@ -5,5 +5,10 @@
       <input placeholder="Enter your destination?" type="text" id="destination">
     </div>
     <div style="width: 100%; height: 480px" class="map-container"></div>
+    {{#if location}}
+    <div class="page-footer">
+      <button>Next</button>
+    </div>
+    {{/if}}
   </div>
 </template>
