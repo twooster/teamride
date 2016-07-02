@@ -1,5 +1,4 @@
 Router.route('/', {
-  name: 'travel',
   controller: 'TravelController'
 });
 

@@ -1,13 +1,11 @@
 ChatController = AppController.extend({
   data: function() {
-    let group = Group.findOne({ _id: this.params.groupId });
+    let ride = Rides.findOne({ _id: this.params.rideId });
     return {
-      group:     group,
-      users:     Meteor.users.find({ _id: {
-        $in: group.userIds
-      }}),
-      messages:  Message.find({ groupId: this.params.groupId },
-                              { sort: { timestamp: 'desc' } });
+      ride:     ride,
+      users:    Users.find({ _id: { $in: ride.userIds }}),
+      messages: Messages.find({ rideId: this.params.rideId },
+                              { sort: { timestamp: 'desc' } })
     };
   },
   /*

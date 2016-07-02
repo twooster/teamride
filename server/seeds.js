@@ -1,4 +1,8 @@
 Meteor.startup(function() {
+  Users.remove({});
+  Rides.remove({});
+  Messages.remove({});
+
   let theLoft = [52.5058605, 13.3932209];
   const destinations = [
     [52.5088605, 13.3918209],
@@ -14,12 +18,12 @@ Meteor.startup(function() {
   }
 
   Factory.define('user', Users, {
-    name: function() { return Fake.word() + ' ' + Fake.word(); }
+    name: function() { return Fake.word() + ' ' + Fake.word(); },
     location: function() {
-      return aroundPoint(theLoft)
+      return aroundPoint(theLoft);
     },
     destination: function() {
-      return aroundPoint(_.sample(destinations))
+      return aroundPoint(_.sample(destinations));
     },
     destinationText: function() {
       return Fake.sentence();
@@ -30,7 +34,7 @@ Meteor.startup(function() {
     userIds: function() {
       let users = [];
       _(_.random(1, 3)).times(function() {
-        users.push(Factory.get('user'))
+        users.push(Factory.create('user'));
       });
       return users;
     },
@@ -56,7 +60,7 @@ Meteor.startup(function() {
     _(3).times(function(n) {
       let ride = Factory.create('ride');
       _(_.random(2, 8)).times(function() {
-        Factory.build('message', {
+        Factory.create('message', {
           rideId: ride._id,
           userId: _.sample(ride.userIds),
         });
