@@ -1,0 +1,177 @@
+body.chat {
+  height: 100%;
+  width: 100%;
+}
+
+/*
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+*/
+
+.conversation-container {
+  padding: 10px;
+}
+
+
+.conversation {
+  padding-left: 30%;
+  margin: 0;
+  width: 100%;
+  list-style-type: none;
+  font-size: 20px;
+}
+
+.conversation .incoming .message-group {
+  padding-right: 10%;
+}
+
+.conversation .outgoing .message-group {
+  padding-left: 10%;
+}
+
+.message-group {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 5px;
+  width: 100%;
+  list-style-type: none;
+}
+
+/* Spacing between groups */
+.message-group > li {
+  margin-bottom: 2px;
+}
+
+.message-group > li:last-child {
+  margin-bottom: auto;
+}
+
+.message-group .message {
+  text-align: left;
+  display: inline-block;
+  border-radius: 8px;
+  background: url('./swirl-pattern.png');
+  background-attachment: fixed;
+}
+
+.message-group .message-inner {
+  display: block;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 6px;
+  border-radius: 6px;
+  color: #333;
+}
+
+.incoming .message-group .message {
+  background-color: #eee;
+  color: #000;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border: 5px solid rgba(200, 212, 128, 0.6);
+}
+
+.incoming .message-group > li:first-child .message {
+  border-top-left-radius: 15px;
+}
+
+.incoming .message-group > li:last-child .message {
+  border-bottom-left-radius: 15px;
+}
+
+.incoming .message-group .message-inner {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.incoming .message-group > li:first-child .message-inner {
+  border-top-left-radius: 10px;
+}
+
+.incoming .message-group > li:last-child .message-inner {
+  border-bottom-left-radius: 10px;
+}
+
+
+.outgoing .message-group {
+  text-align: right;
+}
+
+.outgoing .message-group .message  {
+  color: #eee;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border: 5px solid rgba(128, 200, 212, 0.6);
+}
+
+.outgoing .message-group > li:first-child .message {
+  border-top-right-radius: 15px;
+}
+
+.outgoing .message-group > li:last-child .message {
+  border-bottom-right-radius: 15px;
+}
+
+.outgoing .message-group .message-inner {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.outgoing .message-group > li:first-child .message-inner {
+  border-top-right-radius: 10px;
+}
+
+.outgoing .message-group > li:last-child .message-inner {
+  border-bottom-right-radius: 10px;
+}
+
+/*
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #eee;
+  margin: 0 auto;
+  height: 50px;
+}
+
+.footer-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;;
+}
+
+*/
+
+.conversation .incoming {
+  position: relative;
+}
+
+.conversation .incoming .face-outer {
+  display: none;
+
+  position: absolute;
+  left: -150px;
+  bottom: 0;
+
+  border-radius: 8px;
+  background: url('/images/swirl-pattern.png');
+  background-attachment: fixed;
+  border-radius: 50% 50% 10px 50%;
+  border: 5px solid rgba(200, 212, 128, 0.6);
+  width: 20%;
+  height: 100%;
+}
+
+.conversation .incoming:last-of-type .face-outer {
+  display: block;
+}
+
+.face {
+  background-size: cover;
+  border-radius: 50% 50% 5px 50%;
+  width: 100%;
+  height: 100%;
+}

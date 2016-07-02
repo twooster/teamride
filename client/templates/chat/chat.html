@@ -1,23 +1,61 @@
 <template name="chat">
-  <div class="template-chat">
-    <div class="page-header">
-      <h1>Chat</h1>
+  {{#if Template.subscriptionsReady}}
+    <div class="template-chat">
+      <div class="page-header">
+        <h1>Chat</h1>
+      </div>
+      <div class="conversation-container">
+        <ol class="conversation">
+          {{#each groupedMessages}}
+            {{> chat_message_group}}
+          {{/each}}
+        </ol>
+      </div>
+
+      {{!--
+      <ul>
+        {{#each users}}
+          <li>{{ name }}</li>
+        {{/each}}
+      </ul>
+
+      <ul>
+        {{#each messages}}
+          <li>{{ text }}</li>
+        {{/each}}
+      </ul>
+      --}}
+
+      {{> chat_entry }}
     </div>
+  {{/if}}
+</template>
 
-    <ul>
-      {{#each users}}
-        <li>{{ name }}</li>
-      {{/each}}
-    </ul>
-
-    <ul>
+<template name="chat_message_group">
+  <li class="{{ type }}">
+  {{!--
+    {{#if incoming}}
+      <div class="face-outer">
+        <div class="face"></div>
+      </div>
+    {{/if}}
+  --}}
+    <ol class="message-group">
       {{#each messages}}
-        <li>{{ text }}</li>
+        {{>chat_message}}
       {{/each}}
-    </ul>
+    </ol>
+  </li>
+</template>
 
-    {{> chat_entry }}
-  </div>
+<template name="chat_message">
+  <li>
+    <span class="message">
+      <span class="message-inner">
+       {{ text }}
+      </span>
+    </span>
+  </li>
 </template>
 
 <template name="chat_entry">

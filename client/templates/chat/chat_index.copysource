@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Chat Interface test</title>
+    <link rel="stylesheet" type="text/css" href="interface.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="conversation-container">
+        <ol class="conversation">
+          <li class="incoming">
+            <div class="face-outer">
+              <div class="face"></div>
+            </div>
+            <ol class="message-group">
+              <li>
+                <span class="message">
+                  <span class="message-inner">
+                    Hi there,
+                  </span>
+                </span>
+              </li>
+              <li>
+                <span class="message">
+                  <span class="message-inner">
+                    Here's a good joke from my pal mindy who likes to blow things up and eat hotdogs on the weekends while downing a keg of beer I hope you like it
+                  </span>
+                </span>
+              </li>
+            </ol>
+          </li>
+          <li class="outgoing">
+            <ol class="message-group">
+              <li>
+                <span class="message">
+                  <span class="message-inner">
+                    Oh yes, please
+                  </span>
+                </span>
+              </li>
+              <li>
+                <span class="message">
+                  <span class="message-inner">
+                  I really enjoy this
+                  </span>
+                </span>
+              </li>
+              <li>
+                <span class="message">
+                  <span class="message-inner">
+                  Tell me more, jose
+                  </span>
+                </span>
+              </li>
+            </ol>
+          </li>
+          <li class="incoming">
+            <div class="face-outer">
+              <div class="face"></div>
+            </div>
+            <ol class="message-group">
+              <li>
+                <span class="message">
+                  <span class="message-inner">
+                    Have you seen Rick and Morty?
+                  </span>
+                </span>
+              </li><li>
+                <span class="message">
+                  <span class="message-inner">
+                    "Show me what you got!"
+                  </span>
+                </span>
+              </li>
+            </ol>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-container">
+      </div>
+    </footer>
+  </body>
+</html>
