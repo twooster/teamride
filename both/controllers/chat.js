@@ -4,9 +4,9 @@ ChatController = AppController.extend({
     if (!ride) { return {}; }
     return {
       ride:     ride,
-      users:    Users.find({ _id: { $in: ride.userIds }}),
+      users:    Users.find({ _id: { $in: ride.userIds }}).fetch(),
       messages: Messages.find({ rideId: this.params.rideId },
-                              { sort: { timestamp: 1 } }),
+                              { sort: { timestamp: 1 } }).fetch(),
     };
   },
   onAfterAction: function() {

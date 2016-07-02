@@ -1,5 +1,8 @@
 <template name="chat">
   {{#if Template.subscriptionsReady}}
+    {{if showPendingRequest}}
+      {{> pending_request }}
+    {{/if}}
     <div class="template-chat">
       <div class="page-header">
         <h1>Chat</h1>
@@ -29,6 +32,16 @@
       {{> chat_entry }}
     </div>
   {{/if}}
+</template>
+
+<template name="pending_request">
+  <div class="ride-request">
+    <img src="{{ photo }}">
+    <form>
+      <button class="accept">Yo</button>
+      <button class="reject">No</button>
+    </form>
+  </div>
 </template>
 
 <template name="chat_message_group">

@@ -1,4 +1,27 @@
 Meteor.methods({
+  'acceptRequest': function(rideId) {
+    let userId = Meteor.userId();
+    if (!userId) { return; }
+
+    let ride = Rides.findOne(rideId);
+    if (!ride) {
+      throw new Meteor.Error(404, 'Ride not found');
+    }
+
+    if (!ride.pendingRequest) {
+      throw new Meteor.Error(401, 'No pending request');
+    }
+
+    if (userId !== ride.leaderId) {
+      throw new Meteor.Error(401, 'Bad monkey');
+    }
+
+    Rides.update({ _id: ride._id }, {
+      $set:   { pendingRequest: null },
+      $push:  { userIds: ride.pendingRequest }
+    });
+  },
+
   'rejectRequest': function(rideId) {
     let userId = Meteor.userId();
     if (!userId) { return; }

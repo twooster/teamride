@@ -53,11 +53,43 @@ Template.chat.helpers({
       groupedMessages.push(lastGroup);
     }
     return groupedMessages;
-  }
+  },
+
+  hasPendingRequest: function() {
+    let ride = Template.instance().data.ride;
+    if (!ride) { return }
+
+    if (Meteor.userId() == ride.leaderId && ride.pendingRequest) {
+      return true;
+    }
+  },
 });
 
 Template.chat_message_group.helpers({
   incoming: function() {
     return this.type === 'incoming';
   }
+});
+
+Template.pending_request.helpers({
+  userPhoto: function() {
+    if (!this.pendingRequest) { return; }
+
+    let user = Users.findOne(this.pendingRequest);
+    if (!user) { return; }
+
+    return user.image;
+  },
+});
+
+Template.pending_request.events({
+  'click .accept': function(e) {
+    e.preventDefault();
+    Meteor.call('acceptRequest', this.ride._id);
+  },
+
+  'click .reject': function(e) {
+    e.preventDefault();
+    Meteor.call('rejectRequest', this.ride._id);
+  },
 });
