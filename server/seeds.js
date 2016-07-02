@@ -75,7 +75,6 @@ Meteor.startup(function() {
     });
   }
 
-    console.log(Users.find({ _id: { $in: Rides.find({}).fetch()[0].userIds }}).fetch());
   console.log("Rides:\n\n", Rides.find({}).fetch());
   console.log("Users:\n\n", Users.find({}).fetch());
 });

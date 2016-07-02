@@ -1,6 +1,7 @@
 ChatController = AppController.extend({
   data: function() {
-    let ride = Rides.findOne({ _id: this.params.rideId });
+    let ride = Rides.findOne(this.params.rideId);
+    if (!ride) { return {}; }
     return {
       ride:     ride,
       users:    Users.find({ _id: { $in: ride.userIds }}),
