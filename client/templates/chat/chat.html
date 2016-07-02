@@ -15,5 +15,14 @@
         <li>{{ text }}</li>
       {{/each}}
     </ul>
+
+    {{> chat_entry }}
   </div>
+</template>
+
+<template name="chat_entry">
+  <form class="chat-form">
+    <input type="text" name="message" autocomplete="off"/>
+    <input type="submit" value="Chat"/>
+  </form>
 </template>
