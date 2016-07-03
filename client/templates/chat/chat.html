@@ -78,7 +78,15 @@
 
 <template name="chat_entry">
   <form class="chat-form">
-    <input type="text" name="message" autocomplete="off"/>
-    <input type="submit" value="Chat"/>
+    <div class="row">
+      <div class="input-field col s10">
+        <input type="text" name="message" autocomplete="off"/>
+      </div>
+      <div class="input-field col s2">
+        <button class="btn waves-effect waves-light" type="submit" name="action">Send
+          <i class="material-icons right">Send</i>
+        </button>
+      </div>
+    </div>
   </form>
 </template>

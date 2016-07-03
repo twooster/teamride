@@ -1,7 +1,9 @@
 Meteor.startup(function() {
+  /*
   Users.remove({});
   Rides.remove({});
   Messages.remove({});
+ */
 
   let theLoft = [52.5058605, 13.3932209];
   const destinations = [
@@ -65,7 +67,6 @@ Meteor.startup(function() {
   });
 
   /*
-
   if (Rides.find({}).count() === 0) {
     _(3).times(function(n) {
       let ride = Factory.create('ride');
