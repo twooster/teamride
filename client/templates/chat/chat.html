@@ -37,16 +37,25 @@
 </template>
 
 <template name="pending_request">
-  <div class="ride-request">
+<div id="request-modal" class="modal">
+  <div class="modal-content">
+    <h4>Incoming Request!</h4>
     <img src="{{ userPhoto }}">
     <span>
       {{ userName }} wants to join this ride!
     </span>
+  </div>
+  <div class="modal-footer">
     <form>
-      <button class="accept">Yo</button>
-      <button class="reject">No</button>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat accept-request">Accept</a>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat reject-request">Reject</a>
+      {{!--
+      <button class="btn waves-effect waves-light" type="submit" name="accept">Accept</button>
+      <button class="btn waves-effect waves-light" type="submit" name="reject">Reject</button>
+      --}}
     </form>
   </div>
+</div>
 </template>
 
 <template name="chat_message_group">
