@@ -9,18 +9,13 @@
         </div>
         <!--<div style="width: 100%; height: 480px" class="map-container"></div>-->
 
-        <div class="row">
-            <div class="col s12 m7">
-                <div class="card" style="width: 80vw">
-                    <div class="card-image map-container">
-                    </div>
-                    {{#if location}}
-                    <div class="card-action">
-                        <a class="cyan"><i class="material-icons submit-location">What next?</i></a>
-                    </div>
-                    {{/if}}
-                </div>
-            </div>
+        <div class="map-container" style="width: 80vw; height: 480px">
         </div>
+        {{#if location}}
+            <div style="display: flex; justify-content: center; align-items: center">
+                <a class="btn-floating btn-large waves-effect waves-light cyan submit-location"><i
+                        class="material-icons">thumb_up</i></a>
+            </div>
+        {{/if}}
     </div>
 </template>
