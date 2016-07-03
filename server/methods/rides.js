@@ -20,6 +20,13 @@ Meteor.methods({
       $set:   { pendingRequest: null },
       $push:  { userIds: ride.pendingRequest }
     });
+
+    Messages.insert({
+      userId: Meteor.userId(),
+      rideId: ride._id,
+      text: "Hi, " + Meteor.user().name + " checking in!",
+      timestamp: moment().valueOf()
+    });
   },
 
   'rejectRequest': function(rideId) {

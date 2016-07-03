@@ -5,33 +5,21 @@
         {{> pending_request }}
       {{/with}}
     {{/if}}
-    <div class="template-chat">
-      <div class="page-header">
-        <h1>Chat</h1>
+    <div class="row">
+
+      <div class="template-chat">
+        <div class="page-header">
+          <h1>Chat</h1>
+        </div>
+        <div class="conversation-container">
+          <ol class="conversation">
+            {{#each groupedMessages}}
+              {{> chat_message_group}}
+            {{/each}}
+          </ol>
+        </div>
+        {{> chat_entry }}
       </div>
-      <div class="conversation-container">
-        <ol class="conversation">
-          {{#each groupedMessages}}
-            {{> chat_message_group}}
-          {{/each}}
-        </ol>
-      </div>
-
-      {{!--
-      <ul>
-        {{#each users}}
-          <li>{{ name }}</li>
-        {{/each}}
-      </ul>
-
-      <ul>
-        {{#each messages}}
-          <li>{{ text }}</li>
-        {{/each}}
-      </ul>
-      --}}
-
-      {{> chat_entry }}
     </div>
   {{/if}}
 </template>
@@ -40,14 +28,14 @@
 <div id="request-modal" class="modal">
   <div class="modal-content">
     <h4>Incoming Request!</h4>
-    <img src="{{ userPhoto }}">
+    <img src="{{ userPhoto }}" style="max-width:300px; max-height: 300px;">
     <span>
       {{ userName }} wants to join this ride!
     </span>
   </div>
   <div class="modal-footer">
     <form>
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat accept-request">Accept</a>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn accept-request">Accept</a>
       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat reject-request">Reject</a>
       {{!--
       <button class="btn waves-effect waves-light" type="submit" name="accept">Accept</button>
@@ -60,13 +48,9 @@
 
 <template name="chat_message_group">
   <li class="{{ type }}">
-  {{!--
     {{#if incoming}}
-      <div class="face-outer">
-        <div class="face"></div>
-      </div>
+      <span class="chat-name">{{ name }}</span>
     {{/if}}
-  --}}
     <ol class="message-group">
       {{#each messages}}
         {{>chat_message}}
