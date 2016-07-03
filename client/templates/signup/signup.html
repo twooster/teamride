@@ -11,14 +11,11 @@
             <form class="signup-form">
                 <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-around">
                     <h2>My Name is </h2>
-                    <input type="text" placeholder="Slim Shady ..." required>
+                    <input name="username" type="text" placeholder="Slim Shady ..." required>
                 </div>
                 <input type="file" name="file" id="file" accept="image/*;capture=camera"
-                       style="width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;"
-                       required onchange="previewFile()">
-                <div style="display: flex; align-items: center; justify-content: center">
-                    <img src="/images/femuser.png" height="200" alt="Image preview...">
-                </div>
+                       style="width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute; z-index: -1;"
+                       required>
                 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center">
                     <label class="icon" for="file">
                         <i class="fa fa-camera fa-3x" aria-hidden="true"></i>

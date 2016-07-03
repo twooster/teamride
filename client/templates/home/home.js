@@ -40,8 +40,21 @@ Template.home.events({
     },
     'click .page-footer button': function (e, t) {
         e.preventDefault();
-        Session.set("selfLocationData", t.locationVar.get());
-        Router.go("/signup");
+        //navigator.geolocation.getCurrentPosition(function(pos) {
+          var destA = t.locationVar.get().position;
+          var dest = {
+            lat: destA[0],
+            lng: destA[1],
+          };
+          let theLoft = [52.5058605, 13.3932209];
+          var loc = {
+            lat: theLoft[0],
+            lng: theLoft[1]
+          }
+          Session.set("destination", dest);
+          Session.set("location", loc);
+          Router.go("/signup");
+        //});
     }
 });
 

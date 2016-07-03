@@ -2,15 +2,19 @@ Template.signup.events({
     'submit .signup-form': function(e, t) {
         e.preventDefault();
         let data = Template.currentData();
-        console.log(this);
 
-        let text = String(t.$('input[name="message"]').val()).trim();
-        if (text) {
-            Meteor.call('Messages.insert', {
-                rideId: this.ride._id,
-                text: text
+        debugger
+        let name = String(t.$('input[name="username"]').val()).trim();
+        let selfie = previewFile();
+        if (name && selfie) {
+            let uid = Users.insert({
+              name: name,
+              image: selfie,
+              destination: Session.get('destination'),
+              location: Session.get('location')
             });
-            t.$('input[name="message"]').val('');
+            Meteor.call('loginAsAnyone', uid);
+            debugger
         }
     },
 });
@@ -42,7 +46,7 @@ Template.signup.events({
 
 
 previewFile = function () {
-    var preview = document.querySelector('img');
+    var preview = document.querySelector('img[name=file]');
     var file    = document.querySelector('input[type=file]').files[0];
     var reader  = new FileReader();
 
@@ -51,6 +55,6 @@ previewFile = function () {
     }, false);
 
     if (file) {
-        reader.readAsDataURL(file);
+        return reader.readAsDataURL(file);
     }
 };
