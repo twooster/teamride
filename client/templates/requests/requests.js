@@ -34,7 +34,7 @@ Template.requests.helpers({
   name: function() {
     let user = Users.findOne(this.leaderId);
     return user.name;
-  }
+  },
   imageUrl: function() {
     let user = Users.findOne(this.leaderId);
     return user.image;

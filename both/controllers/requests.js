@@ -13,8 +13,13 @@ RequestsController = AppController.extend({
   },
   onBeforeAction: function() {
     if(this.ready()) {
-      var req = this.data().requests;
       let user = Meteor.user();
+      let ride = Rides.find({userIds: { $in: [user._id] }}).fetch()[0];
+      if (ride) {
+        return Router.go('/chat/' + ride._id);
+      }
+
+      var req = this.data().requests;
       if(user && req.count() === 0) {
         // build a ride and redirect
         return Rides.insert({
@@ -25,7 +30,7 @@ RequestsController = AppController.extend({
           startPoint: user.location,
           endPoint: user.destination
         }, function(e, id) {
-          Router.go('/chat/' + id); // => error 404, not found
+          return Router.go('/chat/' + id); // => error 404, not found
         });
       }
     }

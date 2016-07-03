@@ -1,6 +1,6 @@
 ChatController = AppController.extend({
   data: function() {
-    let ride = Rides.findOne(this.params.rideId);
+    let ride = Rides.find({ _id: this.params.rideId }).fetch()[0];
     if (!ride) { return {}; }
     return {
       ride:     ride,

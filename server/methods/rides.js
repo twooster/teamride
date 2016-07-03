@@ -88,14 +88,4 @@ Meteor.methods({
       }
     });
   },
-
-  'checkForRide': function(startPoint, endPoint) {
-    if (!Meteor.userId()) {
-      throw new Meteor.Error(400, "All the things");
-    }
-    if(!startPoint || !endPoint) {
-      throw new Meteor.Error(400, 'Pls send me params n00b');
-    }
-    return Meteor.findRequestsIn(Meteor.userId(), startPoint, endPoint)
-  }
 })
