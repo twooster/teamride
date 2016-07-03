@@ -21,7 +21,6 @@ Template.requests.events({
     $('.skip-request').attr('disabled', 'disabled');
     Meteor.call('rejectRide', rideId, function(e, r) {
       if (!e) {
-        $('#request-modal').closeModal();
       }
     });
   }
