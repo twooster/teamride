@@ -8,6 +8,7 @@ Template.signup.events({
         let selfie = imgData;
 
         if (name && selfie) {
+            t.$('button[type=submit]').attr('disabled', 'disabled');
             Meteor.logout();
             Meteor.call('makeMeAUser', {
               name: name,

@@ -72,6 +72,16 @@ Template.chat_message_group.helpers({
 });
 
 Template.pending_request.helpers({
+  userName: function() {
+    console.log(this);
+    if (!this.pendingRequest) { return; }
+
+    let user = Users.findOne(this.pendingRequest);
+    console.log(user);
+    if (!user) { return; }
+
+    return user.name;
+  },
   userPhoto: function() {
     if (!this.pendingRequest) { return; }
 
@@ -85,11 +95,11 @@ Template.pending_request.helpers({
 Template.pending_request.events({
   'click .accept': function(e) {
     e.preventDefault();
-    Meteor.call('acceptRequest', this.ride._id);
+    Meteor.call('acceptRequest', this._id);
   },
 
   'click .reject': function(e) {
     e.preventDefault();
-    Meteor.call('rejectRequest', this.ride._id);
+    Meteor.call('rejectRequest', this._id);
   },
 });
