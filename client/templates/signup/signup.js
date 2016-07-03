@@ -15,7 +15,7 @@ Template.signup.events({
     },
 });
 
-function toDataUrl(url, callback, outputFormat){
+ toDataUrl = function (url, callback, outputFormat){
     var img = new Image();
     img.crossOrigin = 'Anonymous';
     img.onload = function(){
@@ -32,15 +32,16 @@ function toDataUrl(url, callback, outputFormat){
     img.src = url;
 }
 
-function uint8ToString(buf) {
+ uint8ToString = function (buf) {
     var i, length, out = '';
     for (i = 0, length = buf.length; i < length; i += 1) {
         out += String.fromCharCode(buf[i]);
     }
     return out;
-}
+};
 
-function previewFile() {
+
+previewFile = function () {
     var preview = document.querySelector('img');
     var file    = document.querySelector('input[type=file]').files[0];
     var reader  = new FileReader();
@@ -52,4 +53,4 @@ function previewFile() {
     if (file) {
         reader.readAsDataURL(file);
     }
-}
+};
