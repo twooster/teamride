@@ -1,20 +1,24 @@
+var imgData;
+
 Template.signup.events({
     'submit .signup-form': function(e, t) {
         e.preventDefault();
-        let data = Template.currentData();
 
-        debugger
         let name = String(t.$('input[name="username"]').val()).trim();
-        let selfie = previewFile();
+        let selfie = imgData;
+
         if (name && selfie) {
-            let uid = Users.insert({
+            Meteor.logout();
+            Meteor.call('makeMeAUser', {
               name: name,
               image: selfie,
               destination: Session.get('destination'),
               location: Session.get('location')
+            }, function(e, uid) {
+              if (!e) {
+                Meteor.loginAsAnyone(uid);
+              }
             });
-            Meteor.call('loginAsAnyone', uid);
-            debugger
         }
     },
 });
@@ -46,15 +50,16 @@ Template.signup.events({
 
 
 previewFile = function () {
-    var preview = document.querySelector('img[name=file]');
+    var preview = document.querySelector('img.img-preview');
     var file    = document.querySelector('input[type=file]').files[0];
     var reader  = new FileReader();
 
     reader.addEventListener("load", function () {
         preview.src = reader.result;
+        imgData = reader.result;
     }, false);
 
     if (file) {
         return reader.readAsDataURL(file);
     }
-};
+}

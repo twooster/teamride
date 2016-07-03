@@ -5,12 +5,7 @@ Accounts.registerLoginHandler('the-great-masquerade', function(data) {
 });
 
 Meteor.methods({
-  // TODO[tmw] slightly improve upon LinkedIn level of security
-  'loginAsId': function(id) {
-    if (!Users.findOne(id)) {
-      this.setUserId(null);
-    } else {
-      this.setUserId(id);
-    }
-  }
+  'makeMeAUser': function(params) {
+    return Users.insert(params);
+  },
 });
