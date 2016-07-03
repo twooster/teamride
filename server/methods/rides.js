@@ -1,3 +1,24 @@
+Meteor.findRequestsIn = function(userId, startPoint, endPoint) {
+  return Rides.find({
+    userId: {$ne: userId},
+    rejects: {$nin: [userId]},
+    startPoint: { $near: {
+      $geometry: {
+        type: "Point",
+        coordinates: startPoint
+      },
+      $maxDistance: 2000
+    }},
+    endPoint: { $near: {
+      $geometry: {
+        type: "Point",
+        coordinates: endPoint
+      },
+      $maxDistance: 5000
+    }}
+  });
+};
+
 Meteor.methods({
   'acceptRequest': function(rideId) {
     let userId = Meteor.userId();
@@ -90,26 +111,12 @@ Meteor.methods({
   },
 
   'checkForRide': function(startPoint, endPoint) {
+    if (!Meteor.userId()) {
+      throw new Meteor.Error(400, "All the things");
+    }
     if(!startPoint || !endPoint) {
       throw new Meteor.Error(400, 'Pls send me params n00b');
     }
-
-    return Rides.find({
-      userId: {$ne: Meteor.userId()},
-      startPoint: { $near: {
-        $geometry: {
-          type: "Point",
-          coordinates: startPoint
-        },
-        $maxDistance: 5000
-      }},
-      endPoint: { $near: {
-        $geometry: {
-          type: "Point",
-          coordinates: endPoint
-        },
-        $maxDistance: 5000
-      }}
-    });
+    return Meteor.findRequestsIn(Meteor.userId(), startPoint, endPoint)
   }
 })

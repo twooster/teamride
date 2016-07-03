@@ -1,7 +1,12 @@
 <template name="requests">
-  <img src="{{ photo }}">
-  <form>
-    <button class="request">Yo</button>
-    <button class="skip">No</button>
-  </form>
+  {{#if showRequest}}
+    {{#if request}}
+      <img src="{{ photo }}">
+      <form>
+        <button class="request">Yo</button>
+        <button class="skip">No</button>
+      </form>
+    {{else}}
+    {{/if}
+  {{/if}}
 </template>
