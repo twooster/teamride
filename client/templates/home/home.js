@@ -45,7 +45,7 @@ Template.home.events({
             console.log(e, r);
         });
     },
-    'click .page-footer button': function (e, t) {
+    'click .submit-location': function (e, t) {
         e.preventDefault();
         //navigator.geolocation.getCurrentPosition(function(pos) {
           var destA = t.locationVar.get().position;
