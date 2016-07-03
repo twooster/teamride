@@ -22,7 +22,8 @@ Template.chat.events({
 
 Template.chat.helpers({
   groupedMessages: function() {
-    if (!Template.instance().data) { return }
+    let data = Template.instance().data;
+    if (!data) { return }
     let groupedMessages = [];
     // {
     //   type: 'incoming' / 'outgoing',
@@ -31,8 +32,7 @@ Template.chat.helpers({
     // }
     let lastGroup = {};
     let lastTimestamp = -Infinity;
-    let messages = Template.instance().data.messages;
-    _.each(this.messages.fetch(), function(msg) {
+    _.each(data.messages, function(msg) {
       if (!lastGroup ||
           msg.userId !== lastGroup.userId ||
           (msg.timestamp - lastTimestamp) > 10 * 1000) {
