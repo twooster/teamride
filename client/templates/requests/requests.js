@@ -1,4 +1,4 @@
-Template.requests.onRendered({
+Template.requests.onRendered(function () {
   if (!Template.subscriptionsReady()) { return; }
 
   let requests = this.requests.fetch();
