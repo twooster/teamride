@@ -1,29 +1,29 @@
 Template.requests.onRendered(function () {
-  /*
-  if (!Template.subscriptionsReady()) { return; }
-
-  let requests = this.requests.fetch();
-  if (!requests.length) {
-    if (!this.timeout) {
-      this.timeout = Meteor.setTimeout(function() {
-        // transfer to "waiting for people screen"
-      }, 3000);
-    }
-  } else if (this.timeout) {
-    Meteor.clearTimeout(this.timeout);
-  }
- */
+  $(this.firstNode).openModal();
 });
 
+Template.requests.onDestroyed(function () {
+  $(this.firstNode).closeModal();
+  $('.lean-overlay').remove();
+});
+
+
 Template.requests.events({
-  'click .request': function() {
+  'click .send-request': function() {
     let rideId = Template.currentData().requests.fetch()[0]._id;
+    $('.send-request').attr('disabled', 'disabled');
     Meteor.call('requestRide', rideId);
   },
 
-  'click .skip': function() {
+  'click .skip-request': function() {
     let rideId = Template.currentData().requests.fetch()[0]._id;
-    Meteor.call('rejectRide', rideId);
+    $('.send-request').attr('disabled', 'disabled');
+    $('.skip-request').attr('disabled', 'disabled');
+    Meteor.call('rejectRide', rideId, function(e, r) {
+      if (!e) {
+        $('#request-modal').closeModal();
+      }
+    });
   }
 });
 

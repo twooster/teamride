@@ -20,6 +20,14 @@ Meteor.methods({
       $set:   { pendingRequest: null },
       $push:  { userIds: ride.pendingRequest }
     });
+
+    var requester = Users.findOne(ride.pendingRequest);
+    Messages.insert({
+      userId: ride.pendingRequest,
+      rideId: ride._id,
+      text: "Hi, " + requester.name + " checking in!",
+      timestamp: moment().valueOf()
+    });
   },
 
   'rejectRequest': function(rideId) {
@@ -54,15 +62,14 @@ Meteor.methods({
       throw new Meteor.Error(404, 'Ride not found');
     }
 
-    var set = {};
+    var update = {};
     if (ride.pendingRequest === userId) {
-      set.pendingRequest = null;
+      update.$set = { pendingRequest: null };
     }
 
-    Rides.update({ _id: ride._id }, {
-      $set:   set,
-      $push:  { rejects: userId }
-    });
+    update.$push = { rejects: userId };
+
+    Rides.update({ _id: ride._id }, update);
   },
 
   'requestRide': function(rideId) {

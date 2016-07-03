@@ -1,13 +1,31 @@
 <template name="requests">
+<div id="request-modal" class="modal">
+  {{#with request}}
+  <div class="modal-content">
+    <h4>Join This Ride?</h4>
+    <img src="{{ imageUrl }}" style="max-width:300px; max-height: 300px;">
+    <span>
+      Would you like to join {{ name }}?
+    </span>
+  </div>
+  <div class="modal-footer">
+    <form>
+      <a href="#!" class="waves-effect waves-green btn send-request">Ask to Join</a>
+      <a href="#!" class="waves-effect waves-green btn-flat skip-request">Skip</a>
+    </form>
+  </div>
+  {{/with}}
+</div>
+{{!--
 <p>
   hi there
   </p>
+  {{!--
   {{#with request}}
-  Would you like to take a ride with {{ name }}?
-  <img src="{{ imageUrl }}">
   <form>
     <button class="request">Yo</button>
     <button class="skip">No</button>
   </form>
   {{/with}}
+  --}}
 </template>

@@ -56,8 +56,6 @@ Template.chat.helpers({
   },
 
   hasPendingRequest: function() {
-    return true;
-
     let ride = Template.instance().data.ride;
     if (!ride) { return }
 
@@ -70,25 +68,24 @@ Template.chat.helpers({
 Template.chat_message_group.helpers({
   incoming: function() {
     return this.type === 'incoming';
+  },
+
+  name: function() {
+    return Users.findOne(this.userId).name;
   }
 });
 
 Template.pending_request.helpers({
   userName: function() {
-    return "tony";
-
-    console.log(this);
     if (!this.pendingRequest) { return; }
 
     let user = Users.findOne(this.pendingRequest);
-    console.log(user);
     if (!user) { return; }
 
     return user.name;
   },
-  userPhoto: function() {
-    return '';
 
+  userPhoto: function() {
     if (!this.pendingRequest) { return; }
 
     let user = Users.findOne(this.pendingRequest);
@@ -99,12 +96,12 @@ Template.pending_request.helpers({
 });
 
 Template.pending_request.events({
-  'click .accept-request': function(e) {
+  'click .accept-request': function(e, t) {
     e.preventDefault();
     Meteor.call('acceptRequest', this._id);
   },
 
-  'click .reject-request': function(e) {
+  'click .reject-request': function(e, t) {
     e.preventDefault();
     Meteor.call('rejectRequest', this._id);
   },
