@@ -17,6 +17,9 @@ Template.signup.events({
             }, function(e, uid) {
               if (!e) {
                 Meteor.loginAsAnyone(uid);
+                Meteor.setTimeout(function() {
+                  Router.go('/requests');
+                }, 500);
               }
             });
         }

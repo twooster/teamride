@@ -18,9 +18,9 @@ Router.route('/chat/:rideId', {
   controller: 'ChatController'
 });
 
-Router.route('/match', {
-  name: 'match',
-  controller: 'MatchController'
+Router.route('/requests', {
+  name: 'requests',
+  controller: 'RequestsController'
 });
 
 

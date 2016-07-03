@@ -1,3 +1,10 @@
+function makeGeoJsonPoint(lat, lng) {
+  return {
+    "type": "Point",
+    "coordinates": [lng, lat]
+  };
+}
+
 Template.home.onCreated(function () {
     this.locationVar = new ReactiveVar();
 });
@@ -42,17 +49,21 @@ Template.home.events({
         e.preventDefault();
         //navigator.geolocation.getCurrentPosition(function(pos) {
           var destA = t.locationVar.get().position;
+          /*
           var dest = {
             lat: destA[0],
             lng: destA[1],
           };
+         */
           let theLoft = [52.5058605, 13.3932209];
+          /*
           var loc = {
             lat: theLoft[0],
             lng: theLoft[1]
           }
-          Session.set("destination", dest);
-          Session.set("location", loc);
+         */
+          Session.set("destination", makeGeoJsonPoint(destA));
+          Session.set("location", makeGeoJsonPoint(theLoft));
           Router.go("/signup");
         //});
     }

@@ -1,12 +1,13 @@
 <template name="requests">
-    {{#if showRequest}}
-        {{#if request}}
-            <img src="{{ photo }}">
-            <form>
-                <button class="request">Yo</button>
-                <button class="skip">No</button>
-            </form>
-        {{else}}
-        {{/if}}
-    {{/if}}
+<p>
+  hi there
+  </p>
+  {{#with request}}
+  Would you like to take a ride with {{ name }}?
+  <img src="{{ imageUrl }}">
+  <form>
+    <button class="request">Yo</button>
+    <button class="skip">No</button>
+  </form>
+  {{/with}}
 </template>
