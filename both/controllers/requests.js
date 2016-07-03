@@ -32,7 +32,7 @@ RequestsController = AppController.extend({
         }, function(e, id) {
           Meteor.call('Messages.insert', {
             rideId: id,
-            text: "Hi, " + requester.name + " first one here!",
+            text: "Hi, I'm " + user.name + ", the ride leader.",
           });
           return Router.go('/chat/' + id); // => error 404, not found
         });
