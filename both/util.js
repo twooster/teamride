@@ -2,6 +2,7 @@ Meteor.findRequestsIn = function(userId, startPoint, endPoint) {
   return Rides.find({
     leaderId: {$ne: userId},
     rejects: {$nin: [userId]},
+    pendingRequest: null,
     startPoint: { $near: {
       $geometry: {
         type: "Point",
